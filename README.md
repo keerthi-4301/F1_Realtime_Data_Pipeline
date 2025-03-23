@@ -38,7 +38,21 @@ Kafka Producer → Kafka Topic → Kafka Consumer
                                  v
                        Snowflake Table (f1_results)
 ```
+## 📁 Project Structure
 
+```text
+F1_Realtime_Data_Pipeline/
+├── producer/
+│   └── f1_kafka_producer.py
+├── consumer/
+│   └── f1_kafka_s3_consumer.py
+│   └── f1_snowflake_loader.py
+├── dags/
+│   └── f1_pipeline_dag.py
+├── .env.example
+├── requirements.txt
+└── README.md
+```
 ---
 ## How It Works
 🏁 1. Producer (f1_kafka_producer.py)
@@ -63,4 +77,21 @@ Run consumer
 
 Load to Snowflake
 
+## env Configuration (example)
+```text
+# Kafka
+KAFKA_BROKER=your.kafka.broker:9092
+KAFKA_TOPIC=f1_race_data
 
+# S3
+S3_BUCKET=your-s3-bucket
+S3_FILE_NAME=f1_race_data.json
+
+# Snowflake
+SNOWFLAKE_USER=your_user
+SNOWFLAKE_PASSWORD=your_password
+SNOWFLAKE_ACCOUNT=your_account
+SNOWFLAKE_DATABASE=your_db
+SNOWFLAKE_SCHEMA=your_schema
+SNOWFLAKE_WAREHOUSE=your_warehouse
+```
